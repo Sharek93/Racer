@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RacerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Highscores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nick" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Czas" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Wynik" Type="int" Nullable="false" />
+          <Property Name="Punkty kontr" Type="int" Nullable="false" />
+          <Property Name="Data" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="start" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="koniec" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="punkty_kontrolne" Type="int" Nullable="false" />
+          <Property Name="mapa" Type="image" />
+          <Property Name="mini_mapa" Type="image" />
+        </EntityType>
+        <EntityContainer Name="RacerModelStoreContainer">
+          <EntitySet Name="Highscores" EntityType="Self.Highscores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Map" EntityType="Self.Map" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RacerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RacerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Map" EntityType="RacerModel.Map" />
+          <EntitySet Name="Highscores" EntityType="RacerModel.Highscores" />
+        </EntityContainer>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="start" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="koniec" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mapa" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="punkty_kontrolne" Type="Int32" Nullable="false" />
+          <Property Name="mini_mapa" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Highscores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nick" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Czas" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Wynik" Type="Int32" Nullable="false" />
+          <Property Name="Punkty_kontr" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RacerModelStoreContainer" CdmEntityContainer="RacerEntities">
+          <EntitySetMapping Name="Map">
+            <EntityTypeMapping TypeName="RacerModel.Map">
+              <MappingFragment StoreEntitySet="Map">
+                <ScalarProperty Name="mini_mapa" ColumnName="mini_mapa" />
+                <ScalarProperty Name="punkty_kontrolne" ColumnName="punkty_kontrolne" />
+                <ScalarProperty Name="mapa" ColumnName="mapa" />
+                <ScalarProperty Name="koniec" ColumnName="koniec" />
+                <ScalarProperty Name="start" ColumnName="start" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Highscores">
+            <EntityTypeMapping TypeName="RacerModel.Highscores">
+              <MappingFragment StoreEntitySet="Highscores">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Punkty_kontr" ColumnName="Punkty kontr" />
+                <ScalarProperty Name="Wynik" ColumnName="Wynik" />
+                <ScalarProperty Name="Czas" ColumnName="Czas" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
