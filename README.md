@@ -1,2 +1,2 @@
 # Racer
-Drugi projekt zaliczeniowy na uczelni, gra wyścigowa 2D z widokiem od góry
+Drugi projekt zaliczeniowy na uczelni, gra wyścigowa 2D z widokiem od góry. Mapa generowana z puli segmentów pobieranych z serwera MSSQL, zaawansowany model jazdy (drift, dopasowanie zachowania do nawierzchni, wpływ hamowania na skręcanie, hamulec ręczny, itp) połaczenie z bazą zrealizowane za pomocą Entity. zapis wyników graczy do bazy z możliwością ich późniejszego wyświetlenia. Standardowe sterowanie strzałki + spacja. Całość zrealizowana na System.Drawing. 
